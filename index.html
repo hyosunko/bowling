@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bowling Simulator</title>
+  </head>
+  <body>
+    <div id="score">Score:</div>
+    <br>
+    <div class="score-table">
+      <ul>
+        <li class="round-name">Round</li>
+        <li class="round-name">1</li>
+        <li class="round-name">2</li>
+        <li class="round-name">3</li>
+        <li class="round-name">4</li>
+        <li class="round-name">5</li>
+        <li class="round-name">6</li>
+        <li class="round-name">7</li>
+        <li class="round-name">8</li>
+        <li class="round-name">9</li>
+        <li class="round-name">10</li>
+        <li class="round-name">Total</li>
+      </ul>
+      <ul>
+        <li class="score-title">Score</li>
+        <li class="scores" id="round-1">0</li>
+        <li class="scores" id="round-2">0</li>
+        <li class="scores" id="round-3">0</li>
+        <li class="scores" id="round-4">0</li>
+        <li class="scores" id="round-5">0</li>
+        <li class="scores" id="round-6">0</li>
+        <li class="scores" id="round-7">0</li>
+        <li class="scores" id="round-8">0</li>
+        <li class="scores" id="round-9">0</li>
+        <li class="scores" id="round-10">0</li>
+        <li class="scores" id="total-score">0</li>
+      </ul>
+    </div>
+
+    <button id="play-button">Play</button>
+    <button id="reset-button">Reset Play</button>
+    <hr>
+    <br>
+    <div id="round-no"></div>
+    <br>
+    <div>
+      <div id="first-pins"> </div>
+      <div id="second-pins"> </div>
+      <div id="third-pins"> </div>
+    </div>
+  </div>
+  </body>
+  <script src="game.js"></script>
+</html>

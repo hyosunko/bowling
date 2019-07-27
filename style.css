@@ -1,0 +1,26 @@
+.score-table > ul {
+  border: 1px solid black;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+ul {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+li {
+  list-style: none;
+  border: 1px solid black;
+  padding: 20px;
+  height: 10px;
+  width: 10px;
+  text-align: center;
+}
+
+li:last-child {
+  width: 40px;
+}
+li:first-child {
+  width: 40px;
+}
