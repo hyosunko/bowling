@@ -12,6 +12,7 @@ roundFrameStatus = ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"];
 
 document.querySelector("#play-button").addEventListener("click", function() {
   if (round < 11) {
+    var item = document.querySelector(`#round-${round}`);
     document.querySelector("#round-no").innerHTML = "Round: " + round;
     // 1. random remain pins
     firstPins = Math.floor(Math.random() * 11);
@@ -26,11 +27,18 @@ document.querySelector("#play-button").addEventListener("click", function() {
       roundScore[round - 1] = 10 - secondPins;
     }
 
+    document.querySelector("#first-pins").innerHTML =
+      "first remain pins: " + firstPins;
+    document.querySelector("#second-pins").innerHTML =
+      "second remain pins: " + secondPins;
     // add each round frame status: Open, Strike(S), Spare(P)
     if (firstPins === 0) {
       roundFrameStatus[round - 1] = "S";
+      item.classList.add("strike");
+      document.querySelector("#second-pins").innerHTML = "";
     } else if (secondPins === 0) {
       roundFrameStatus[round - 1] = "P";
+      item.classList.add("spare");
     } else {
       roundFrameStatus[round - 1] = "O";
     }
@@ -48,25 +56,23 @@ document.querySelector("#play-button").addEventListener("click", function() {
       document.querySelector(`#round-${round - 1}`).innerHTML =
         roundScore[round - 2];
     }
+
+    //total Score calculation
+    totalScore = roundScore.reduce((total, current) => total + current);
+
+    // replace remaining pins for each round
+    document.querySelector("#first-pins").innerHTML =
+      "first remain pins: " + firstPins;
+
+    if (round === 10 && (firstPins === 0 || secondPins === 0)) {
+      document.querySelector("#third-pins").innerHTML =
+        "second remain pins: " + thirdPins;
+    }
+    // replace each round score and total score
+    document.querySelector(`#round-${round}`).innerHTML = roundScore[round - 1];
+    document.querySelector("#total-score").innerHTML = totalScore;
+    round++;
   }
-
-  //total Score calculation
-  totalScore = roundScore.reduce((total, current) => total + current);
-
-  // replace remaining pins for each round
-  document.querySelector("#first-pins").innerHTML =
-    "first remain pins: " + firstPins;
-  document.querySelector("#second-pins").innerHTML =
-    "second remain pins: " + secondPins;
-
-  if (round === 10 && (firstPins === 0 || secondPins === 0)) {
-    document.querySelector("#third-pins").innerHTML =
-      "second remain pins: " + thirdPins;
-  }
-  // replace each round score and total score
-  document.querySelector(`#round-${round}`).innerHTML = roundScore[round - 1];
-  document.querySelector("#total-score").innerHTML = totalScore;
-  round++;
 });
 
 // reset
@@ -81,5 +87,7 @@ document.querySelector("#reset-button").addEventListener("click", function() {
     li.innerHTML = 0;
     roundFrameStatus[i] = "O";
     roundScore[i] = 0;
+    li.classList.remove("strike");
+    li.classList.remove("spare");
   }
 });
